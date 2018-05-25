@@ -14,19 +14,34 @@ Stefan Schwartze
 * CI / CD
 ---
 
-## Money, money
-* Pay ressources you don't need permanently
----
+## Simple express application
+![alt Simple express application](https://cdn-images-1.medium.com/max/2000/1*FOKLXN58KdHMIXnq9XmMbQ.jpeg)
+----
+
+![alt Under load](https://cdn-images-1.medium.com/max/2000/1*oRxOi15ZwmxllRruaUrajg.jpeg)
+----
+
+![alt Under too much load](https://cdn-images-1.medium.com/max/1600/1*rLrZQImeF1JAAemPMsT4CA.jpeg)
+----
 
 ## Kill the server
 ![Try serverless!](https://cdn-images-1.medium.com/max/1600/1*hkjYPGxG2q_r_-bUk1qSWw.jpeg)
+---
+
+![alt An example "serverless" architecture](https://martinfowler.com/articles/serverless/sps.svg)
+Note:
+1. We’ve deleted the authentication logic in the original application and have replaced it with a third-party BaaS service (e.g., Auth0.)
+2. Another BaaS, accesing database directly from client (e.g. Firebase)
+3. More logic in the client (authentication, DB connection)
+4. Keep UX functionality, just execute them on the server. Example: search function, also processing larger amounts of data
+5. Keep security relevant functions like purchasing on the server
 ---
 
 ## FaaS
 **F**unctions **a**s **a** **s**ervice
 ----
 
-> Fundamentally, FaaS is about running backend code without managing your own server systems or your own long-lived server applications. 
+> Fundamentally, FaaS is about running backend code without managing your own server systems or your own long-lived server applications.<br/>
 -- Mike Roberts
 ---
 
@@ -35,10 +50,16 @@ Stefan Schwartze
 ----
 
 ### AWS Lambda
-* Executes your functions on demand
+> AWS Lambda is a compute service that lets you run code without provisioning or managing servers.<br/>
+—- AWS Documentation
 ----
 
 ### AWS Gateway
+* Gateway for providing endpoints
+* Executes function in response to events
+```javascript
+app.get('/', function(req, res, next) { /* execute some code */ });
+```
 ---
 
 ### AWS config is always pain
@@ -107,20 +128,26 @@ $ npm install serverless-offline --save-dev
 
 #### Cost
 ![Save money](https://cdn-images-1.medium.com/max/1600/1*_SyXSIVxi0a5UKA5nQCBOQ.jpeg)
+* Only pay for running the functions
+Note:
+* AWS Lambda: 0.20$ / 1 million calls
 ----
 
 #### Productivity
 * Developers can focus on product development
-* Less worry about 
+* Less worry about architecture
 ---
 
 ## Why serverless framework?
 * Simplifies setting up
+* Vendor-independent
+* Ecosystem
 ---
 
 ## Disadvantages
 * Not suitable for long-term tasks
 * No websockets with Lambda
+* "Cold starts"
 ---
 
 ## Sources
