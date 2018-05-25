@@ -89,6 +89,22 @@ $ serverless create --template aws-nodejs --path my-service
 
 ### serverless.yml
 * Config file for all settings
+
+```yaml
+service: my-service
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello/get
+          method: get
+```
 ----
 
 ### Writing a first function
@@ -114,8 +130,24 @@ $ serverless deploy -v
 ----
 
 ### Testing locally
+
+*Install*
+
 ```bash
 $ npm install serverless-offline --save-dev
+```
+*Setup*
+
+```yaml
+...
+
+plugins:
+  - serverless-offline
+```
+*Run*
+
+```bash
+$ serverless offline start
 ```
 ---
 
@@ -127,7 +159,7 @@ $ npm install serverless-offline --save-dev
 ----
 
 #### Cost
-![Save money](https://cdn-images-1.medium.com/max/1600/1*_SyXSIVxi0a5UKA5nQCBOQ.jpeg)
+![Save money](images/cost.jpeg)
 * Only pay for running the functions
 Note:
 * AWS Lambda: 0.20$ / 1 million calls
@@ -152,7 +184,7 @@ Note:
 
 ## Sources
 
-* Slobodan Stojanivic: https://medium.freecodecamp.org/express-js-and-aws-lambda-a-serverless-love-story-7c77ba0eaa35
-* Adnan Rahic: https://hackernoon.com/a-crash-course-on-serverless-with-node-js-632b37d58b44
-* Martin Fowler: https://martinfowler.com/articles/serverless.html
-* Serverless docs: https://serverless.com/framework/docs/
+* [Slobodan Stojanivic](https://medium.freecodecamp.org/express-js-and-aws-lambda-a-serverless-love-story-7c77ba0eaa35)
+* [Adnan Rahic](https://hackernoon.com/a-crash-course-on-serverless-with-node-js-632b37d58b44)
+* [Martin Fowler](https://martinfowler.com/articles/serverless.html)
+* [Serverless docs](https://serverless.com/framework/docs/)
