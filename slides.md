@@ -9,9 +9,17 @@ Stefan Schwartze
 
 ## Things to master
 * Database
+<!-- .element: class="fragment" -->
 * Authentication
-* Scaling
+<!-- .element: class="fragment" -->
+* Routing
+<!-- .element: class="fragment" -->
 * CI / CD
+<!-- .element: class="fragment" -->
+* Scaling
+<!-- .element: class="fragment" -->
+Note:
+* Don't pay too much unneeded servers
 ---
 
 ## Simple express application
@@ -28,6 +36,7 @@ Stefan Schwartze
 ![Try serverless!](https://cdn-images-1.medium.com/max/1600/1*hkjYPGxG2q_r_-bUk1qSWw.jpeg)
 ---
 
+### A "serverless" architecture
 ![alt An example "serverless" architecture](https://martinfowler.com/articles/serverless/sps.svg)
 Note:
 1. We’ve deleted the authentication logic in the original application and have replaced it with a third-party BaaS service (e.g., Auth0.)
@@ -56,10 +65,15 @@ Note:
 
 ### AWS Gateway
 * Gateway for providing endpoints
+<!-- .element: class="fragment" -->
 * Executes function in response to events
+<!-- .element: class="fragment" -->
+* Skips serverside routing
+<!-- .element: class="fragment" -->
 ```javascript
 app.get('/', function(req, res, next) { /* execute some code */ });
 ```
+<!-- .element: class="fragment" -->
 ---
 
 ### AWS config is always pain
@@ -76,9 +90,11 @@ app.get('/', function(req, res, next) { /* execute some code */ });
 ```bash
 $ npm install -g serverless
 ```
+<!-- .element: class="fragment" -->
 ```bash
 $ serverless config credentials --provider aws --key xxxxxxxxxxxxxx --secret xxxxxxxxxxxxxx
 ```
+<!-- .element: class="fragment" -->
 ----
 
 ### Create a service
@@ -132,23 +148,26 @@ $ serverless deploy -v
 ### Testing locally
 
 *Install*
-
+<!-- .element: class="fragment" -->
 ```bash
 $ npm install serverless-offline --save-dev
 ```
+<!-- .element: class="fragment" -->
 *Setup*
-
+<!-- .element: class="fragment" -->
 ```yaml
 ...
 
 plugins:
   - serverless-offline
 ```
+<!-- .element: class="fragment" -->
 *Run*
-
+<!-- .element: class="fragment" -->
 ```bash
 $ serverless offline start
 ```
+<!-- .element: class="fragment" -->
 ---
 
 ## Why serverless architecture?
