@@ -1,6 +1,7 @@
 #### A talk about
 # Serverless
-Stefan Schwartze
+Stefan Schwartze<br/><br/>
+*All images are under copyright of the authors in sources section*
 ---
 
 ## A typical Node server architecture
